@@ -1,1 +1,0 @@
-This repository is created for HI-41. Please fork before making some tasks
