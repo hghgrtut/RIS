@@ -1,0 +1,26 @@
+import re # подключаем библиотеку re
+
+
+def base(): # создаем функцию base
+
+    pat = re.match(r'[abcdefghijklmnopqrstuv5320736]{29}', input('Enter base string: ')) # методом match ищем заданное регулярное выражение
+    
+    if pat is None: # если введенная строка не соответствует регулярному выражению, то в pat записывается None
+        print('BAAAAD JOOOB') # выводим 'BAAAAD JOOOB', если pat == None
+    else:
+        print('GOOOOOOOD JOOOB')
+
+
+def Yarmolik(): # создаем функцию Yarmolik
+    
+    pat = re.match(r'[0-9]{2}[.][0-9]{2}[ ][USD|RUR|EU]', input('Enter string: ')) # методом match ищем заданное регулярное выражение
+    
+    if pat is None: # если введенная строка не соответствует регулярному выражению, то в pat записывается None
+        print('BAAAAD JOOOB')
+    else:
+        print('GOOOOOOOD JOOOB')
+
+
+while True: # бесконечный цикл
+    base() # вызываем функции
+    Yarmolik()
