@@ -8,24 +8,27 @@ namespace lab2
 {
     public class ObjectSerializable
     {
-        public void SerializableToFile(String nameFile, Train train)
+        public async void SerializableToFile(String nameFile, Train train)
         {
-            FileStream fileStream = new FileStream(nameFile + ".json", FileMode.OpenOrCreate);
-            JsonSerializer.Serialize(fileStream, train);
+            FileStream fileStream = new FileStream(nameFile+ ".json", FileMode.OpenOrCreate);
+            await JsonSerializer.SerializeAsync(fileStream, train);
+            await fileStream.DisposeAsync();
         }
 
         public Train DeserializeFromFile(String nameFile)
         {
-            FileStream fileStream = new FileStream(nameFile + ".json", FileMode.OpenOrCreate);
-            Train train = JsonSerializer.Deserialize<Train>(fileStream);
-            if(train != null)
-            {
-                return train;
-            }
-            else
-            {
-                throw new ArgumentNullException();
-            }
+           FileStream fileStream = new FileStream(nameFile + ".json", FileMode.Open);
+           Train? train = JsonSerializer.Deserialize<Train>(fileStream);
+           fileStream.Dispose();
+           if(train != null)
+           {
+            return train;
+           }
+           else
+           {
+            throw new IOException();
+           }
+
         }
     }
 }

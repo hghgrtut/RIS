@@ -5,7 +5,7 @@ namespace lab2
     {
         public static void Main()
         {
-            Person person = new("Mira", "Varel");
+            Person person = new("Coco", "Milk");
             Bag bag = new(person);
 
             Carriage carriage = new (TypeCarriage.PASSENGER, 1, 1);
@@ -15,10 +15,14 @@ namespace lab2
             Train train = new ("R8", 2);
             train.AddCarriage(carriage);
 
+
             ObjectSerializable objectSerializable = new();
 
             objectSerializable.SerializableToFile("test", train);
-            Train newTrain = objectSerializable.DeserializeFromFile("test");
+
+            Train newTrain = objectSerializable.DeserializeFromFile("test");          
+
+
         }
     }
 }
