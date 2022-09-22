@@ -1,8 +1,9 @@
 import java.io.Serializable;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 //создаем класс улицы, в котором прописаны дома и квартиры этой улицы
-public class Street implements Serializable {
+public class Street implements Serializable, StreetIn {
     // перечисление полей класса
     private String name; // имя улицы
     private List<House> houses; // список домов на улице
