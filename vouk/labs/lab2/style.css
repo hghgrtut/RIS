@@ -1,0 +1,18 @@
+* {
+  font-size: 24px;
+}
+
+body {
+  background-color: aqua;
+}
+
+.valid {
+  color: green;
+  display: none;
+}
+
+.invalid {
+  color: red;
+  display: none;
+}
+ 
