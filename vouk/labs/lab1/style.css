@@ -1,0 +1,12 @@
+* {
+  font-size: 24px;
+}
+.valid {
+  color: green;
+  display: none;
+}
+
+.invalid {
+  color: red;
+  display: none;
+}
