@@ -1,11 +1,14 @@
 import java.io.Serializable
+import java.rmi.Remote
 
 class Country() {
 
     val list: MutableList<PopulatedPoint> = mutableListOf()
 }
 
-open class PopulatedPoint(var population: Int) : Serializable {
+open class PopulatedPoint(var population: Int) : Serializable, Remote {
+
+    fun printPopulation() = println(population)
     private companion object  { const val serialVersionUID = 1L }
 }
 
