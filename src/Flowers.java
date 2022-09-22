@@ -1,9 +1,16 @@
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.rmi.Remote;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Flowers implements Serializable, Remote {
+=======
+import java.util.ArrayList;
+import java.util.List;
+
+public class Flowers implements Serializable {
+>>>>>>> ccf01c30fe25388273024d10e74ff92d50ec1f12
     private Vasilek flowersecond;
     private String buket;
     private List<Flower> flowerList = new ArrayList<>();
