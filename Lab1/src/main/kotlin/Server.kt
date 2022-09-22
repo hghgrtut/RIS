@@ -7,22 +7,20 @@ import java.rmi.registry.Registry
 
 object Server {
 
-    private const val PORT = 1099
-    private val registry: Registry by lazy { LocateRegistry.createRegistry(PORT) }
+    const val PORT = 1099 // Port for our server
+    private val registry: Registry by lazy { LocateRegistry.createRegistry(PORT) } // Registry for our server
 
-    @Throws(RemoteException::class, AlreadyBoundException::class)
+    @Throws(RemoteException::class, AlreadyBoundException::class) // Explicitly annotate to show that this method can produce Remote and AlreadyBound exceptions
     fun registerObject(name: String, remoteObj: Remote) {
-        registry.bind(name, remoteObj)
-        println("Registered: $name -> ${remoteObj.javaClass.name}[$remoteObj]")
+        registry.bind(name, remoteObj) // binds some class instance to specific name
+        println("Registered: $name -> ${remoteObj.javaClass.name}[$remoteObj]") // Log initialized object
     }
 
-    @Throws(Exception::class)
-    @JvmStatic
+    @JvmStatic // Annotation to generate all variants of this function
     fun main(args: Array<String>) {
-        println("Server starting...")
+        println("Server starting...") // Log start of initializing of the server
         registerObject(PopulatedPoint::class.java.simpleName, PopulatedPoint(15))
-        // Server was the start, and was listening to the request from the
-        println("Server started!")
-        while (true) {}
+        println("Server started!") // Log end of initializing of the server
+        while (true) {} // Endless cycle that prevents server from immediately shutting down
     }
 }
