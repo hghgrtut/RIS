@@ -1,0 +1,31 @@
+Вариант 5
+
+class Month {
+    #month = 0;
+
+    constructor(month) {
+        this.#month = +JSON.stringify(month);
+    }
+
+    get month() {
+        return JSON.parse(this.#month);
+    }
+}
+
+class Year {
+    #year = 0;
+
+    constructor(month1, month2) {
+        this.#year = +JSON.stringify(Math.floor((month1 + month2) / 12));
+    }
+
+    createYear() {
+        return "Получившийся год: " + JSON.parse(this.#year);
+    }
+}
+
+let month1 = new Month(22);
+let month2 = new Month(12);
+
+let year = new Year(month1.month, month2.month);
+console.log(year.createYear());
