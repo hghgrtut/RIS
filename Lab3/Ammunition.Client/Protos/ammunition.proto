@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ammunition.Server.Proto";
+
+package ammunition;
+
+import "google/protobuf/empty.proto";
+import "Protos/ammunition_model.proto";
+
+service Ammunition {  
+  rpc GetAmmunition (google.protobuf.Empty) returns (AmmunitionsResponse);
+}
+
+message AmmunitionsResponse {
+  AmmunitionModel ammunition = 1;
+}
+
