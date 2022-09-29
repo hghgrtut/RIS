@@ -1,0 +1,15 @@
+C:\Work\Project\OtherProject\ammunition\bin\Debug\net6.0\ammunition.exe
+C:\Work\Project\OtherProject\ammunition\bin\Debug\net6.0\ammunition.deps.json
+C:\Work\Project\OtherProject\ammunition\bin\Debug\net6.0\ammunition.runtimeconfig.json
+C:\Work\Project\OtherProject\ammunition\bin\Debug\net6.0\ammunition.dll
+C:\Work\Project\OtherProject\ammunition\bin\Debug\net6.0\ammunition.pdb
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.csproj.AssemblyReference.cache
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.AssemblyInfoInputs.cache
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.AssemblyInfo.cs
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.csproj.CoreCompileInputs.cache
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.dll
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\refint\ammunition.dll
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.pdb
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ammunition.genruntimeconfig.cache
+C:\Work\Project\OtherProject\ammunition\obj\Debug\net6.0\ref\ammunition.dll
