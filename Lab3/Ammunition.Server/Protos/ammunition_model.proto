@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ammunition.Server.Proto.Models";
+
+package ammunition;
+
+message AmmunitionModel{
+    string model = 1;
+    double price = 2;
+    TypeAmmunition typeAmmunition = 3;
+}
+
+enum TypeAmmunition{
+    Helmet = 0;
+    Jacket = 1;
+    Gloves = 2;
+    Pants = 3;
+    Protection = 4; 
+    ThermalUnderwear = 5;
+}
