@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import com.gmail.annastel.dao.PersonDAO;
 import com.gmail.annastel.models.Person;
 
-/**
- * @author Neil Alishev
- */
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
