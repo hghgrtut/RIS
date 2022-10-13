@@ -7,24 +7,23 @@ import { Link } from "react-router-dom";
 const Books = () => {
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const fetchAllBooks = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/books");
-        setBooks(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchAllBooks();
-  }, []);
+  const fetchAllBooks = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/books");
+      setBooks(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => { fetchAllBooks(); }, []);
 
   console.log(books);
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8800/books/${id}`);
-      window.location.reload()
+      fetchAllBooks();
     } catch (err) {
       console.log(err);
     }
@@ -32,11 +31,11 @@ const Books = () => {
 
   return (
     <div>
-      <h1>Lab4 CRUD Vouk</h1>
+      <h1>Lab5 ajax CRUD Vouk</h1>
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
-            <img src="/img/book.jpg" /*{book.cover}*/ alt="Книга" />
+            <img src={require('./img/book.jpg')} alt="Книга" />
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
             <span>{book.price} byn</span>
@@ -52,7 +51,9 @@ const Books = () => {
           </div>
         ))}
       </div>
-
+      <div>
+        <button className="fetch" onClick={() => fetchAllBooks()}>Fetch</button>
+      </div>
       <button className="addHome">
         <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
           Add
