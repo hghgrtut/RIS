@@ -1,0 +1,25 @@
+* {
+  font-size: 24px;
+}
+
+body {
+  background-image: url(/lab3/client/images/elka.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.valid {
+  color: green;
+  display: none;
+}
+
+.invalid {
+  color: red;
+  display: none;
+}
+ 
