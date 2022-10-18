@@ -1,10 +1,11 @@
-package dao;
+package com.gmail.chitakov2606nikita.dao;
 
 import org.springframework.stereotype.Component;
-import models.Person;
+import com.gmail.chitakov2606nikita.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Component
 public class PersonDAO {
@@ -14,10 +15,10 @@ public class PersonDAO {
     {
         people = new ArrayList<>();
 
-        people.add(new Person(++PEOPLE_COUNT, "Abraham", 43, "abraham@mail.ru"));
-        people.add(new Person(++PEOPLE_COUNT, "Nikita", 22, "nick@mail.ru"));
-        people.add(new Person(++PEOPLE_COUNT, "Vladislav", 20, "vladyahoo.com"));
-        people.add(new Person(++PEOPLE_COUNT, "Vasya", 18, "vs@gmail.com"));
+        people.add(new Person(++PEOPLE_COUNT, "Tom"));
+        people.add(new Person(++PEOPLE_COUNT, "Bob"));
+        people.add(new Person(++PEOPLE_COUNT, "Mike"));
+        people.add(new Person(++PEOPLE_COUNT, "Katy"));
     }
 
     public List<Person> index() {
@@ -37,8 +38,6 @@ public class PersonDAO {
         Person personToBeUpdated = show(id);
 
         personToBeUpdated.setName(updatedPerson.getName());
-        personToBeUpdated.setAge(updatedPerson.getAge());
-        personToBeUpdated.setEmail(updatedPerson.getEmail());
     }
 
     public void delete(int id) {

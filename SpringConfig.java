@@ -1,4 +1,4 @@
-package config;
+package com.gmail.chitakov2606nikita.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +12,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+
 @Configuration
+@ComponentScan("com.gmail.chitakov2606nikita")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
