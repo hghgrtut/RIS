@@ -6,11 +6,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
+<label>Name: </label>
 <p th:text="${person.getName()}">VALUE</p>
+<label>Id: </label>
 <p th:text="${person.getId()}">VALUE</p>
+<label>Email: </label>
+<p th:text="${person.getEmail()}">VALUE</p>
+<label>Age: </label>
+<p th:text="${person.getAge()}">VALUE</p>
 
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
-
 
 </body>
 </html>
