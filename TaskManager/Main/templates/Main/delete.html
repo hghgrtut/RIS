@@ -1,0 +1,12 @@
+{% extends 'Main/base.html' %}
+
+{% block body %}
+    <div class="cen">
+    <h3>Удаление задачи:</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+        </div>
+{% endblock %}
