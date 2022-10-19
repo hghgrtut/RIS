@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_tracker
+    username: postgres
+    password: xwbk01xn17
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  error:
+    include-message: always
+  port: 8081
