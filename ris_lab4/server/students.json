@@ -1,0 +1,40 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "firstName": "Axleksei",
+      "lastName": "Gavrilyak",
+      "age": 20,
+      "group": "GI-41",
+      "phoneNumber": "+375298074311",
+      "mail": "Gavrilyak02@mail.ru"
+    },
+    {
+      "id": 2,
+      "firstName": "Aleksandr",
+      "lastName": "Doroschenko",
+      "age": 21,
+      "group": "GI-41",
+      "phoneNumber": "+375293222987",
+      "mail": "hghgr@tut.by"
+    },
+    {
+      "id": 3,
+      "firstName": "Igor",
+      "lastName": "Zaitsev",
+      "age": 20,
+      "group": "GI-41",
+      "phoneNumber": "+375291446297",
+      "mail": "igorhy2002@mail.ru"
+    },
+    {
+      "id": 4,
+      "firstName": "Aliaksandr",
+      "lastName": "Haritonov",
+      "age": "20",
+      "group": "GI-41",
+      "phoneNumber": "+375449635623",
+      "mail": "haritonov2@gmail.com"
+    }
+  ]
+}
