@@ -1,0 +1,6 @@
+com\gmail\annastel\config\MySpringMvcDispatcherSerlvetIntitializer.class
+com\gmail\annastel\config\SpringConfig.class
+com\gmail\annastel\controllers\PeopleController.class
+com\gmail\annastel\controllers\RestController.class
+com\gmail\annastel\models\Person.class
+com\gmail\annastel\dao\PersonDAO.class
