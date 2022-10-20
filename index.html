@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="context">
+    <div th:each="person : ${people}" th:id="@{person{id}(id=${person.getId()})}">
+        <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
+        <input type="submit" value="Delete" th:onclick="@{func({id})(id=${person.getId()})}"/>
+    </div>
+</div>
+<br/>
+<hr/>
+<a href="/people/new">Create new person</a>
+<form th:method="POST" th:action="@{/people}" th:object="${person}" onsubmit="return create()">
+</form>
+</body>
+<script>
+    function func(id) {
+        $.ajax({
+            url: "/ajax/" + id,
+            success: function (result) {
+                $("#person" + id).remove();
+            }
+        });
+        return false;
+    }
+
+    function create() {
+        $.ajax({
+            url: "/create/" + $("#name").val(),
+            success: function (result_id) {
+                $("#context").append("<div id=\"person" + result_id + "\">\n" +
+                    "<a href=\"/people/" + result_id + "\">" + $("#name").val() + "</a>\n" +
+                    "<input type=\"submit\" value=\"Delete\" onClick=\"func(" + result_id + ")\"/>\n" +
+                    "</div>");
+                $("#name").val("");
+            }
+        });
+        return false;
+    }
+</script>
+</html>
