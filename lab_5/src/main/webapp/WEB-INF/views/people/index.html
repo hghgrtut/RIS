@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="context">                      /*Объект, который станет контекстом после выполнения запроса*/
+    <div th:each="person : ${people}" th:id="@{person{id}(id=${person.getId()})}">
+        <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
+        <input type="submit" value="Delete" th:onclick="@{func({id})(id=${person.getId()})}"/>
+    </div>
+</div>
+<br/>
+<hr/>
+<a href="/people/new">Create new person</a>                                                     /*Запись нового имени*/
+<form th:method="POST" th:action="@{/people}" th:object="${person}" onsubmit="return create()"> /*Форма главной страницы*/
+    <label for="name">Enter name: </label>                                                      /*Окошко для ввода имени*/
+    <input type="text" th:field="*{name}" id="name"/>                                           /*Ввод имени*/
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+<script>
+    function func(id) {
+        $.ajax({                                    /*создаем конструкцию ajax*/
+            url: "/ajax/" + id,                     /*куда пойдет запос*/
+            success: function (result) {            /*функция которая будет выполнена после успешного запроса*/
+                $("#person" + id).remove();         /*удаляем имя ыбранного человека*/
+            }
+        });
+        return false;
+    }
+
+    function create() {                             /*переменная ID - это идишник формы*/
+        $.ajax({ /*создаем конструкцию ajax*/
+            url: "/create/" + $("#name").val(),     /*куда пойдет запос*/
+            success: function (result_id) {         /*функция которая будет выполнена после успешного запроса*/
+                $("#context").append
+                ("<div id=\"person" + result_id + "\">\n" +
+                    "<a href=\"/people/" + result_id + "\">" + $("#name").val() + "</a>\n" +
+                    "<input type=\"submit\" value=\"Delete\" onClick=\"func(" + result_id + ")\"/>\n" +
+                    "</div>");/* обращение к старанице, акоторая вводит имена людей и даёт возможность добвить/удалить новое имя */
+                $("#name").val("");
+            }
+        });
+        return false;
+    }
+</script>
+</body>
+</html>
