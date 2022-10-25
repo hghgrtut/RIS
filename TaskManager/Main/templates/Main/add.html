@@ -1,0 +1,21 @@
+{% extends 'Main/base.html' %}
+
+{% block body %}
+    {% if page %}
+    <h3>Добавить задачу:</h3>
+    {% else %}
+    <h3>Редактировать задачу:</h3>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        {% if page %}
+        <button type="submit" class="btn btn-success">Добавить</button>
+        {% else %}
+        <button type="submit" class="btn btn-warning">Редактировать</button>
+        {% endif %}
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
