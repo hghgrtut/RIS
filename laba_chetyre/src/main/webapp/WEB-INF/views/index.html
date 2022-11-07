@@ -7,14 +7,14 @@
 <body>
 <div id="context">                                                                        /* контекст главной страницы*/
   <div th:each="task : ${tasks}" th:id="@{task{id}(id=${task.id}">
-    <a th:href="@{/{id}(id=${task.id})}" th:text="${task.name}">user</a>
+    <a th:href="@{/task/{id}(id=${task.id})}" th:text="${task.name}">user</a>
     <input type="submit" value="Delete" th:onclick="@{func({id})(id=${task.id})}"/>
   </div>
 </div>
 <br/>
 <hr/>
 <a href="/new">Create new </a>
-<form th:method="POST" th:action="" th:object="${task}">
+<form th:method="POST" th:action="/task" th:object="${task}">
   <label for="name">Enter name: </label>
   <input type="text" th:field="*{name}" id="name"/>
   <br/>
@@ -33,8 +33,8 @@
   }
 
   function create() {
-    $.ajax({ url: "/" + $("#name").val(), success: function (result_id) {
-        $("#context").append("<div id=\"" + result_id + "\">\n" + "<a href=\"/" + result_id + "\">" + $("#name").val() + "</a>\n" + "<input type=\"submit\" value=\"Delete\" onClick=\"func(" + result_id + ")\"/>\n" + "</div>");
+    $.ajax({ url: "/task/" + $("#name").val(), success: function (result_id) {
+        $("#context").append("<div id=\"" + result_id + "\">\n" + "<a href=\"/task/" + result_id + "\">" + $("#name").val() + "</a>\n" + "<input type=\"submit\" value=\"Delete\" onClick=\"func(" + result_id + ")\"/>\n" + "</div>");
         $("#name").val("");
       }
     });

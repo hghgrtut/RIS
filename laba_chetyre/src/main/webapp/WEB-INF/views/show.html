@@ -9,6 +9,6 @@
 <p th:text="${task.name}">VALUE</p>
 <p th:text="${task.createAt}">VALUE</p>
 <p th:text="${task.description}">VALUE</p>
-<a th:href="@{/{id}/(id=${task.id})}">Change task</a>
+<a th:href="@{/task/{id}/(id=${task.id})}">Change task</a>
 </body>
 </html>

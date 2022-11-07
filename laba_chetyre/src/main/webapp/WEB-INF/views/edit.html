@@ -5,7 +5,7 @@
     <title>Update task</title>
 </head>
 <body>
-    <form th:method="PATCH" th:action="@{/{id}(id=${task.id})}" th:object="${task}">
+    <form th:method="PATCH" th:action="@{/task/{id}(id=${task.id})}" th:object="${task}">
         <label for="name">Enter name: </label>
         <input type="text" th:field="*{name}" id="name"/>
         <br/>
