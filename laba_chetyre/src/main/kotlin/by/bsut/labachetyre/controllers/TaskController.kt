@@ -31,14 +31,6 @@ class TaskController @Autowired constructor(
         return objectMapper.writeValueAsString(TaskDTOFactory().toTaskDTO(taskEntity))
     }
 
-    @PatchMapping("/{id}")
-    @Throws(JsonProcessingException::class)
-    fun updateTask(@PathVariable("id") id: Int, @RequestBody bodyParams: Map<String?, String?>): String {
-        val entity: TaskEntity = taskService.copyProperties(taskService.findById(id), getTaskEntity())
-        taskService.save(entity)
-        return objectMapper.writeValueAsString(TaskDTOFactory().toTaskDTO(entity))
-    }
-
     @DeleteMapping("/{id}")
     fun deleteTask(@PathVariable("id") id: Int) = taskService.deleteById(id)
 
