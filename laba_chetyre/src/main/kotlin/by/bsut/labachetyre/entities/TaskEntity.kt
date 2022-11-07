@@ -1,13 +1,25 @@
 package by.bsut.labachetyre.entites
 
-import by.bsut.labachetyre.annotations.Id
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.Table
 
+@Data
+@Entity
+@Table(name = "people")
 data class TaskEntity() {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id = 0
+    @Column(name = "name")
     var name: String? = null
+    @Column(name = "createAt")
     var createAt: LocalDateTime = LocalDateTime.now()
+    @Column(name = "description")
     var description: String? = null
 
     constructor(name: String?, description: String?) {
