@@ -14,7 +14,7 @@ data class TaskEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id = 0
+    var id = 0L
     @Column(name = "name")
     var name: String? = null
     @Column(name = "createAt")
