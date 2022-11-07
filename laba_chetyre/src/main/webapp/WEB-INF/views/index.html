@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main page</title>
+</head>
+<body>
+<div id="context">                                                                        /* контекст главной страницы*/
+  <div th:each="task : ${tasks}" th:id="@{task{id}(id=${task.id}">
+    <a th:href="@{/{id}(id=${task.id})}" th:text="${task.name}">user</a>
+    <input type="submit" value="Delete" th:onclick="@{func({id})(id=${task.id})}"/>
+  </div>
+</div>
+<br/>
+<hr/>
+<a href="/new">Create new </a>
+<form th:method="POST" th:action="" th:object="${task}">
+  <label for="name">Enter name: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <br/>
+  <label for="createAt">Enter date-time of the task: </label>
+  <input type="datetime-local" th:field="*{createAt}" id="createAt"/>
+  <br/>
+  <label for="description">Enter description: </label>
+  <input type="text" th:field="*{description}" id="description"/>
+  <br/>
+  <input type="submit" value="Add new task"/>
+</form>
+<script>
+  function func(id) {
+    $.ajax({url: "/ajax/" + id, success: function (result) { $("#task" + id).remove(); }});
+    return false;
+  }
+
+  function create() {
+    $.ajax({ url: "/" + $("#name").val(), success: function (result_id) {
+        $("#context").append("<div id=\"" + result_id + "\">\n" + "<a href=\"/" + result_id + "\">" + $("#name").val() + "</a>\n" + "<input type=\"submit\" value=\"Delete\" onClick=\"func(" + result_id + ")\"/>\n" + "</div>");
+        $("#name").val("");
+      }
+    });
+    return false;
+  }
+</script>
+</body>
+</html>

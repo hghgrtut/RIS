@@ -23,7 +23,7 @@ class TaskController @Autowired constructor(
         taskService.findAll().stream().map { taskEntity -> TaskDTOFactory().toTaskDTO(taskEntity) }.toList()
     )
 
-    @PostMapping
+    @PostMapping("/{id}")
     @Throws(JsonProcessingException::class)
     fun createTask(@RequestBody bodyParams: Map<String?, String?>): String {
         val taskEntity: TaskEntity = getTaskEntity()
