@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<p th:text="${task.name}">VALUE</p>
+<p th:text="${task.createAt}">VALUE</p>
+<p th:text="${task.description}">VALUE</p>
+<a th:href="@{/task/{id}/(id=${task.id})}">Change task</a>
+</body>
+</html>

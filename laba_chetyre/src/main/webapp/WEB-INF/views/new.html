@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New person</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+  <form th:method="POST" th:action="/task" th:object="${task}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="createAt">Enter date-time of the task: </label>
+    <input type="datetime-local" th:field="*{createAt}" id="createAt"/>
+    <br/>
+    <label for="description">Enter description: </label>
+    <input type="text" th:field="*{description}" id="description"/>
+    <br/>
+    <input type="submit" value="Add new task"/>
+  </form>
+</body>
+</html>
