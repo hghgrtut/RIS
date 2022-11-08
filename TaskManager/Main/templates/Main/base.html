@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>TaskManager</title>
+    {% endif %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2baec1d694.js" crossorigin="anonymous"></script>
+    <link type="text/css" href="{% static 'Main/css/style.css' %}" rel="stylesheet" />
+
+    {% if page == 'activeTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/main.ico' %}"/>
+    {% elif page == 'didTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/did.ico' %}"/>
+    {% elif page == 'allTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/all.ico' %}"/>
+    {% elif page == 'addTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/add.ico' %}"/>
+    {% elif page == 'updateTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/edit.ico' %}"/>
+    {% elif page == 'deleteTask' %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'Main/images/delete.ico' %}"/>
+    {% endif %}
+
+</head>
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="{% url 'activeTask' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="{% static 'Main/images/logo.png' %}" class="bi me-2" width="45" height="45">
+        <span class="fs-4">Task Manager</span>
+      </a>
+
+      <ul class="nav nav-pills">
+          {% if page == 'activeTask' %}
+            <li class="nav-item"><a href="{% url 'activeTask' %}" class="nav-link active" aria-current="page">Активные задачи</a></li>
+          {% else %}
+            <li class="nav-item"><a href="{% url 'activeTask' %}" class="nav-link" aria-current="page">Активные задачи</a></li>
+          {% endif %}
+            {% if page == 'didTask' %}
+                <li class="nav-item"><a href="{% url 'didTask' %}" class="nav-link active" aria-current="page">Выполненные задачи</a></li>
+            {% else %}
+                <li class="nav-item"><a href="{% url 'didTask' %}" class="nav-link" aria-current="page">Выполненные задачи</a></li>
+            {% endif %}
+          {% if page == 'allTask' %}
+            <li class="nav-item"><a href="{% url 'allTask' %}" class="nav-link active" aria-current="page">Все задачи</a></li>
+          {% else %}
+            <li class="nav-item"><a href="{% url 'allTask' %}" class="nav-link" aria-current="page">Все задачи</a></li>
+          {% endif %}
+          {% if page == 'addTask' %}
+            <li class="nav-item"><a href="{% url 'addTask' %}" class="nav-link active">Добавить задачу</a></li>
+          {% else %}
+            <li class="nav-item"><a href="{% url 'addTask' %}" class="nav-link">Добавить задачу</a></li>
+          {% endif %}
+      </ul>
+
+
+
+    </header>
+  </div>
+
+<div class="container">
+{% block body %}
+
+{% endblock %}
+</div>
+
+
+</body>
+</html>
