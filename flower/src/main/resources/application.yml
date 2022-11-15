@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/flower
+    username: postgres
+    password: xwbk01xn17
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  error:
+    include-message: always
+  port: 8080
+jwt.secret.access: hDQNjMRGIQw1swh5bVw2P6g1ezq5yB+mS5Ea53i6RTqBdX1fFICFI31BOgaFoXtF6VtmFO6dbLSlK385HRNSFQ==
+jwt.secret.refresh: WAXL5RT4aXTiZvgoCF2RFY9rXitxVsUvYkFyhok4fQbxFth2CFX5J2jMWuTA3cI+1qeHvu1bEcJzCmOeNTgGvQ==
