@@ -1,0 +1,41 @@
+.todos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-top: 10rem;
+}
+
+.todos-container h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.todos-container form {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.todos-container form input[type="text"] {
+  width: auto;
+}
+
+.todos-container ul {
+  width: 50%;
+}
+
+.todos-container ul li {
+  display: flex
+}
+
+.todos-container ul li p {
+  margin: auto auto auto 0;
+}
+
+.todos-container ul li button {
+  margin-left: 1rem;
+}
