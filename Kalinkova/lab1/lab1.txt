@@ -1,0 +1,14 @@
+Вариант 5
+1. function isStr(str) {
+    const re = /abcdefghijklmnopqrstuv5320736/;
+    return re.test(str);
+}
+
+isStr("abcdefghijklmnopqrstuv5320736")
+
+2. function isDate(date) {
+    const re = /(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}/;
+    return re.test(date);
+}
+
+isDate("22/03/2222");
