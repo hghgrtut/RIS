@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Sofa",
+    "price": 756.64,
+    "imgUrl": "/imgs/sofa.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Notebook",
+    "price": 1199,
+    "imgUrl": "/imgs/notebook.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Candies",
+    "price": 15.87,
+    "imgUrl": "/imgs/candies.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Car",
+    "price": 14000,
+    "imgUrl": "/imgs/car.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Motorbike",
+    "price": 9777.29,
+    "imgUrl": "/imgs/motorbike.jpg"
+  }
+]
