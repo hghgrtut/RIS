@@ -1,14 +1,8 @@
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
 
 const CLIENT_ID = "fe7c1c70279811b5fe4f";
-
-type userData = {
-  login: string;
-  html_url: string;
-  avatar_url: string;
-};
 
 export function Auth() {
   const [rerender, setRerender] = useState(false);
@@ -21,7 +15,7 @@ export function Auth() {
 
     if (codeParam && localStorage.getItem("accessToken") === null) {
       async function getAccessToken() {
-        await fetch("https://localhost:5173/getAccessToken?code=" + codeParam, {
+        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
           method: "GET",
         })
           .then((response) => {
@@ -35,11 +29,12 @@ export function Auth() {
             }
           });
       }
+      getAccessToken();
     }
   }, []);
 
   async function getUserData() {
-    await fetch("http://localhost:5173/getUserData", {
+    await fetch("http://localhost:4000/getUserData", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("accessToken"),
@@ -64,7 +59,6 @@ export function Auth() {
     <>
       {localStorage.getItem("accessToken") ? (
         <>
-          <h1>We have the access token</h1>
           <Button
             onClick={() => {
               localStorage.removeItem("accessToken");
@@ -73,17 +67,27 @@ export function Auth() {
           >
             Log out
           </Button>
-          <h3>Get User Data from GitHub API</h3>
-          <Button onClick={getUserData}>Get Data</Button>
+          <h3>We have the access token</h3>
+          <Button onClick={getUserData}>Show User Data</Button>
           {Object.keys(userData).length !== 0 ? (
-            <>
-              <h4>Hey there</h4>
-              {/* {userData.login}</h4>
-              <img width="100px" height="100px" src={userData.avatar_url}></img>
-              <a href={userData.html_url} style={{ color: "green" }}>
-                Link to the GitHub profile
-              </a> */}
-            </>
+            <Card className="my-5">
+              <Card.Body className="d-flex flex-column">
+                <div
+                  className="d-flex align-items-center flex-column"
+                  style={{ gap: ".5rem" }}
+                >
+                  <h2>{userData.login}</h2>
+                  <img
+                    width="200px"
+                    height="200px"
+                    src={userData.avatar_url}
+                  ></img>
+                  <Button href={userData.html_url} size="sm">
+                    Link to the GitHub profile
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
           ) : (
             <></>
           )}

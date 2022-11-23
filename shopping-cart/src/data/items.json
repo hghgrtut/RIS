@@ -22,5 +22,11 @@
     "name": "Car",
     "price": 14000,
     "imgUrl": "/imgs/car.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Motorbike",
+    "price": 9777.29,
+    "imgUrl": "/imgs/motorbike.jpg"
   }
 ]

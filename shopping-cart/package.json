@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.cjs"
   },
   "dependencies": {
     "body-parser": "^1.20.1",
