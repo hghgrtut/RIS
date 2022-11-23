@@ -1,0 +1,19 @@
+<!--Представление для отображения списка людей-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All people</title>
+</head>
+<body>
+
+<!--Вывод списка людей с помощью thymeleaf-->
+<div th:each="person : ${people}">
+    <a th:href="@{/people/{id}(id=${person.getId()})"
+       th:text="${person.getName()+ ', ' + person.getAge()}">-</a>
+</div>
+<br /><br />
+<!--Создание нового человека-->
+<a href="/people/new">Create new</a>
+</body>
+</html>

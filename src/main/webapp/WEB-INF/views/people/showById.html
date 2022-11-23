@@ -1,0 +1,23 @@
+<!--Представление для отображения человека по id-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person</title>
+</head>
+<body>
+
+<!--Вывод информации о человеке с помощью thymeleaf-->
+<p th:text="${person.getName() + ', ' + person.getAge()}">VALUE</p>
+<p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
+<p th:text="${person.getId()}">VALUE</p>
+
+<!--Переход к редактированию человека-->
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+
+<!--Удаление человека-->
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"/>
+
+</body>
+</html>
