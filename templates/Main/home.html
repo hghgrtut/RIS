@@ -1,0 +1,295 @@
+{% extends 'Main/base.html' %}
+{% load static %}
+{% block body %}
+
+<body>
+        <!-- Product Area Start -->
+        <div class="product-area pb-100px">
+            <div class="container">
+                <!-- Section Title & Tab Start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center">
+                            <h2 class="title pt-70px">Новые товары</h2>
+                            <p>Больше товаров доступно в нашем <a href="{% url 'all_products' %}">каталоге</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section Title & Tab End -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row mb-n-30px">
+                            {% for obj in new_products %}
+                            <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                <!-- Single Prodect -->
+                                <div class="product">
+                                    <span class="badges">
+                                        <span class="new">New</span>
+                                    </span>
+                                    <div class="thumb">
+                                        <a href="{{ obj.get_absolute_url }}" class="image">
+                                            <img src="{{ obj.photo.url }}" alt="Product" width="270" height="274"/>
+                                            <img class="hover-image" src="{{ obj.photo.url }}" alt="Product" width="270" height="274" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <span class="category"><a href="#">{{ obj.category }}</a></span>
+                                        <h5 class="title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}
+                                            </a>
+                                        </h5>
+                                        <span class="price">
+                                            <span class="new">${{ obj.old_price }}</span>
+                                        </span>
+                                    </div>
+                                    <div class="actions">
+                                                <button title="Добавить в корзину" data-product="{{obj.id}}"  data-bs-toggle="modal" data-bs-target="#exampleModal-Cart" data-action="add" class="action add-to-cart update-cart"><i
+                                                    class="pe-7s-shopbag"></i></button>
+
+                                                <button title="Добавить в избранное" data-product="{{obj.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist" data-action="add" class="action wishlist"><i
+                                                        class="pe-7s-like"></i></button>
+
+
+                                                <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Area End -->
+        <!-- Banner Area Start -->
+        <div class="banner-area style-three pb-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="single-banner mb-lm-30px">
+                            <img src="{% static  'Main/images/first.jpg' %}" alt="Product" width="572" height="542" />
+                            <div class="banner-content nth-child-3">
+                                <a href="{% url 'login' %}" class="shop-link">Вход <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-banner mb-lm-30px">
+                            <img src="{% static  'Main/images/second.jpg' %}" alt="Product" width="572" height="542" />
+                            <div class="banner-content nth-child-3">
+                                <a href="{% url 'signup' %}" class="shop-link">Регистрация <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Banner Area End -->
+        <!-- Feature product area start -->
+
+        <!-- Feature product area End -->
+        <!-- Fashion Area Start -->
+        <div class="fashion-area" data-bg-image="{% static 'Main/images/home.jpg' %}" >
+            <div class="container h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 text-center">
+                        <h2 class="title"> <span>Умная мода</span> С умными девайсами </h2>
+                        <a href="{% url 'all_products' %}" class="btn btn-primary text-capitalize m-auto">все товары</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fashion Area End -->
+        <!-- Feature Area Srart -->
+        <div class="feature-area pt-100px pb-100px">
+            <div class="container">
+                <div class="feature-wrapper">
+                    <div class="single-feture-col mb-md-30px mb-lm-30px">
+                        <!-- single item -->
+                        <div class="single-feature">
+                            <div class="feature-icon">
+                                <img src="{% static 'Main/images/icons/1.png' %}" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Бесплатная доставка</h4>
+                                <span class="sub-title">При покупке от $39</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single item -->
+                    <div class="single-feture-col mb-md-30px mb-lm-30px">
+                        <div class="single-feature">
+                            <div class="feature-icon">
+                                <img src="{% static 'Main/images/icons/2.png' %}" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Безналичная оплата</h4>
+                                <span class="sub-title">Рассрочка на 12 месяцев</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single item -->
+                    <div class="single-feture-col">
+                        <div class="single-feature">
+                            <div class="feature-icon">
+                                <img src="{% static 'Main/images/icons/3.png' %}" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Лёгкий  возврат</h4>
+                                <span class="sub-title">Делай покупки с уверенностью</span>
+                            </div>
+                        </div>
+                        <!-- single item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature Area End -->
+        <!-- Blog area start from here -->
+
+        <!-- Blog area end here -->
+        <!-- Footer Area Start -->
+
+        <!-- Footer Area End -->
+    </div>
+    <!-- Modal -->
+    <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                            <!-- Swiper -->
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/1.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/2.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/3.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/4.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/5.webp' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/1.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/2.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/3.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/4.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/5.webp' %}" alt="">
+                                    </div>
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-buttons">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-details-content quickview-content">
+                                <h2>Modern Smart Phone</h2>
+                                <div class="pricing-meta">
+                                    <ul class="d-flex">
+                                        <li class="new-price">$20.90</li>
+                                    </ul>
+                                </div>
+
+                                <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
+
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Категория: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Smart Device, </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Бренд: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Smart Device, </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-quality">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    </div>
+                                    <div class="pro-details-cart">
+                                        <button class="add-cart"> Добавить в корзину</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+    <!-- Modal Cart -->
+    <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Added to cart successfully!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'Main/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+    <!-- Modal wishlist -->
+    <div class="modal customize-class fade" id="exampleModal-Wishlist" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Added to Wishlist successfully!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'Main/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+
+</body>
+{% endblock %}

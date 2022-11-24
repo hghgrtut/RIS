@@ -1,0 +1,347 @@
+{% load static %}
+<html lang="zxx" dir="ltr">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Hmart</title>
+    {% endif %}
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'Main/images/favicon.ico' %}" />
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'Main/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'Main/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'Main/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'Main/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Main/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Main/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'Main/css/jquery-ui.min.css' %}">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+    <!-- Minify Version -->
+    <!-- <link rel="stylesheet" href="{% static 'Main/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Main/css/style.min.css' %}"> -->
+
+        <script type="text/javascript">
+            var user = '{{request.user}}'
+        </script>
+
+
+</head>
+
+<div class="main-wrapper">
+<header>
+            <!-- Header top area start -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col">
+                            <div class="welcome-text">
+                                <p>Добро пожаловать в наш интернет-магазин:)</p>
+                            </div>
+                        </div>
+                        <div class="col d-none d-lg-block">
+                            <div class="top-nav">
+                                <ul>
+                                    <li><a href="tel:+375(29)144-62-98"><i class="fa fa-phone"></i> +375(29)144-62-98</a></li>
+                                    <li><a href="mailto:i.zaitsev.programmer@mail.ru"><i class="fa fa-envelope-o"></i> i.zaitsev.programmer@mail.ru</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> Выход</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'login' %}"><i class="fa fa-user"></i> Вход</a></li>
+                                    {% endif %}
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header top area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom  d-none d-lg-block">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a href="{% url 'home' %}"><img src="{% static 'Main/images/logo/logo.png' %}" alt="Site Logo" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="#">
+                                    <input type="text" placeholder="Search" />
+                                    <button><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                                <!-- Single Wedge Start -->
+                                <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                                <!-- Single Wedge End -->
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">01</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                                <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                                    <i class="pe-7s-menu"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom d-lg-none sticky-nav style-1">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a href="index.html"><img src="{% static 'Main/images/logo/logo.png' %}" alt="Site Logo" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="#">
+                                    <input type="text" placeholder="Search" />
+                                    <button><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                                <!-- Single Wedge Start -->
+                                <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                                <!-- Single Wedge End -->
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">01</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                                <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                                    <i class="pe-7s-menu"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- header navigation area start -->
+            <div class="header-nav-area d-none d-lg-block sticky-nav">
+                <div class="container">
+                    <div class="header-nav">
+                        <div class="main-menu position-relative">
+                            <ul>
+                                <li><a href="{% url 'home' %}">Главная</a></li>
+                                <li><a href="{% url 'all_products' %}">Все товары</a></li>
+                                <li><a href="{% url 'contact' %}">Контакты</a></li>
+                                <li><a href="{% url 'about' %}">О нас</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header navigation area end -->
+
+        </header>
+        <!-- offcanvas overlay start -->
+        <div class="offcanvas-overlay"></div>
+        <!-- offcanvas overlay end -->
+        <!-- OffCanvas Wishlist Start -->
+        <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
+            <div class="inner">
+                <div class="head">
+                    <span class="title">Избранное</span>
+                    <button class="offcanvas-close">×</button>
+                </div>
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        <li>
+                            <a href="single-product.html" class="image"><img src="{% static 'Main/images/product-image/1.webp' %}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Modern Smart Phone</a>
+                                <span class="quantity-price">1 x <span class="amount">$21.86</span></span>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="buttons">
+                        <a href="{% url 'wishlist' %}" class="btn btn-dark btn-hover-primary mt-30px">Посмотреть избранное</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- OffCanvas Wishlist End -->
+        <!-- OffCanvas Cart Start -->
+        <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
+            <div class="inner">
+                <div class="head">
+                    <span class="title">Корзина</span>
+                    <button class="offcanvas-close">×</button>
+                </div>
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        <li>
+                            <a href="single-product.html" class="image"><img src="{% static 'Main/images/product-image/1.webp' %}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Modern Smart Phone</a>
+                                <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="buttons mt-30px">
+                        <a href="{% url 'cart' %}" class="btn btn-dark btn-hover-primary mb-30px">Посмотреть корзину</a>
+                        <a href="checkout.html" class="btn btn-outline-dark current-btn">Оплатить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- OffCanvas Cart End -->
+        <!-- OffCanvas Menu Start -->
+
+
+{% block body %}
+
+
+{% endblock %}
+
+     <div class="footer-area">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Start single blog -->
+                            <div class="col-md-6 col-lg-3 mb-md-30px mb-lm-30px">
+                                <div class="single-wedge">
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="{% static 'Main/images/logo/footer-logo.png' %}" alt=""></a>
+                                    </div>
+                                    <p class="about-text">Всегда рады видеть вас на страницах нашего магазина:)
+                                    </p>
+                                    <ul class="link-follow">
+                                        <li>
+                                            <a title="GitHub" target="_blank" rel="noopener noreferrer" href="https://github.com/igor-zaitsau"><i class="fa fa-github" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="Telegram" target="_blank" rel="noopener noreferrer" href="https://t.me/igor_zaitsev0"><i class="fa fa-telegram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="VK" target="_blank" rel="noopener noreferrer" href="https://vk.com/igor.zaitsau"><i class="fa fa-vk" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="Instagram" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/igor_huilo/"><i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End single blog -->
+                            <!-- Start single blog -->
+                            <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-60px">
+                                <div class="single-wedge">
+                                    <h4 class="footer-herading">Навигация</h4>
+                                    <div class="footer-links">
+                                        <div class="footer-row">
+                                            <ul class="align-items-center">
+                                                <li class="li"><a class="single-link" href="{% url 'home' %}">Главная</a></li>
+                                                <li class="li"><a class="single-link" href="{% url 'all_products' %}">Все товары</a></li>
+                                                <li class="li"><a class="single-link" href="{% url 'contact' %}">Контакты</a></li>
+                                                <li class="li"><a class="single-link" href="{% url 'about' %}">О нас</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End single blog -->
+                            <!-- Start single blog -->
+                            <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-40px">
+                                <div class="single-wedge">
+                                    <h4 class="footer-herading">Мой аккаунт</h4>
+                                    <div class="footer-links">
+                                        <div class="footer-row">
+                                            <ul class="align-items-center">
+                                                <li class="li"><a class="single-link" href="my-account.html">Аккаунт</a></li>
+                                                <li class="li"><a class="single-link" href="{% url 'login' %}">Вход/Регистрация</a></li>
+                                                <li class="li"><a class="single-link" href="shop-left-sidebar.html">Корзина</a></li>
+                                                <li class="li"><a class="single-link" href="login.html">Избранное</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End single blog -->
+                            <!-- Start single blog -->
+                            <div class="col-md-6 col-lg-3 col-sm-12">
+                                <div class="single-wedge">
+                                    <h4 class="footer-herading">Доп. информация</h4>
+                                    <div class="footer-links">
+                                        <!-- News letter area -->
+                                        <p class="address">Адрес: Гомель, ул. Кирова 34.</p>
+                                        <p class="phone">Телефон:<a href="tel:0123456789"> +375(29)144-62-98</a></p>
+                                        <p class="mail">Почта:<a href="mailto:i.zaitsev.programmer@mail.ru"> i.zaitsev.programmer@mail.ru</a></p>
+                                        <!-- News letter area  End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End single blog -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+ <!-- Global Vendor, plugins JS -->
+    <!-- JS Files
+    ============================================ -->
+    <script src="{% static 'Main/js/vendor/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Main/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'Main/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+    <script src="{% static 'Main/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/scrollUp.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/venobox.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins/mailchimp-ajax.js' %}"></script>
+
+    <!-- Minify Version -->
+    <!-- <script src="{% static 'Main/js/vendor.min.js' %}"></script>
+    <script src="{% static 'Main/js/plugins.min.js' %}"></script>
+    <script src="{% static 'Main/js/main.min.js' %}"></script> -->
+
+    <!--Main JS (Common Activation Codes)-->
+    <script src="{% static 'Main/js/main.js' %}"></script>
+
+    <script src="{% static 'cart/js/cart.js' %}"></script>
+
+</html>

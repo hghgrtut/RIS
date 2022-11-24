@@ -1,0 +1,374 @@
+{% extends 'Main/base.html' %}
+{% load static %}
+
+{% block body %}
+        <!-- Shop Page Start  -->
+        <div class="shop-category-area pt-100px pb-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
+                        <!-- Shop Top Area Start -->
+                        <div class="shop-top-bar d-flex">
+                            <!-- Left Side End -->
+                            <div class="shop-tab nav">
+                                <button class="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
+                                    <i class="fa fa-th" aria-hidden="true"></i>
+                                </button>
+                                <button data-bs-target="#shop-list" data-bs-toggle="tab">
+                                    <i class="fa fa-list" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <!-- Right Side Start -->
+                            <div class="select-shoing-wrap d-flex align-items-center">
+                                <div class="shot-product">
+                                    <p>Sort By:</p>
+                                </div>
+                                <!-- Single Wedge End -->
+                                <div class="header-bottom-set dropdown">
+                                    <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a class="dropdown-item" href="#">Name, A to Z</a></li>
+                                        <li><a class="dropdown-item" href="#">Name, Z to A</a></li>
+                                        <li><a class="dropdown-item" href="#">Price, low to high</a></li>
+                                        <li><a class="dropdown-item" href="#">Price, high to low</a></li>
+                                        <li><a class="dropdown-item" href="#">Sort By new</a></li>
+                                        <li><a class="dropdown-item" href="#">Sort By old</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Single Wedge Start -->
+                            </div>
+                            <!-- Right Side End -->
+                        </div>
+                        <!-- Shop Top Area End -->
+                        <!-- Shop Bottom Area Start -->
+                        <div class="shop-bottom-area">
+                            <!-- Tab Content Area Start -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="shop-grid">
+                                            <div class="row mb-n-30px">
+                                                {% for obj in products %}
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                                    <!-- Single Prodect -->
+                                                    <div class="product">
+                                                        <span class="badges">
+                                                        <span class="new">New</span>
+                                                        </span>
+                                                        <div class="thumb">
+                                                            <a href="{{ obj.get_absolute_url }}" class="image">
+                                                                <img src="{{ obj.photo.url }}" alt="Product" width="270" height="274" />
+                                                                <img class="hover-image" src="{{ obj.photo.url }}" alt="Product" width="270" height="274"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <span class="category"><a href="#">{{ obj.category }}</a></span>
+                                                            <h5 class="title"><a href="single-product.html">{{ obj.title }}
+                                                                </a>
+                                                            </h5>
+                                                            <span class="price">
+                                                            <span class="new">${{ obj.old_price }}</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="actions">
+                                                            <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                                class="pe-7s-shopbag"></i></button>
+                                                            <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                                    class="pe-7s-like"></i></button>
+                                                            <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade mb-n-30px" id="shop-list">
+                                            {% for obj in products %}
+                                            <div class="shop-list-wrapper mb-30px">
+                                                <div class="row">
+
+                                                    <div class="col-md-5 col-lg-5 col-xl-4 mb-lm-30px">
+                                                        <div class="product">
+                                                            <div class="thumb">
+                                                                <a href="single-product.html" class="image">
+                                                                    <img src="{{ obj.photo.url }}"  width="270" height="274" alt="Product" />
+                                                                    <img class="hover-image" src="{{ obj.photo.url }}" alt="Product" width="270" height="274" />
+                                                                </a>
+                                                                <span class="badges">
+                                                                <span class="new">New</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-7 col-lg-7 col-xl-8">
+                                                        <div class="content-desc-wrap">
+                                                            <div class="content">
+                                                                <span class="category"><a href="#">{{ obj.category }}</a></span>
+                                                                <h5 class="title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h5>
+                                                                <p>{{ obj.description|truncatechars:250 }}</p>
+                                                            </div>
+                                                            <div class="box-inner">
+                                                                <span class="price">
+                                                                <span class="new">${{ obj.old_price }}</span>
+                                                                </span>
+                                                                <div class="actions">
+                                                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                                        class="pe-7s-shopbag"></i></button>
+                                                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                                            class="pe-7s-like"></i></button>
+                                                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab Content Area End -->
+                            <!--  Pagination Area Start -->
+                            <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
+                                <div class="pages">
+                                    <ul>
+                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
+                                        </li>
+                                        <li class="li"><a class="page-link" href="#">1</a></li>
+                                        <li class="li"><a class="page-link active" href="#">2</a></li>
+                                        <li class="li"><a class="page-link" href="#">3</a></li>
+                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--  Pagination Area End -->
+                        </div>
+                        <!-- Shop Bottom Area End -->
+                    </div>
+                    <!-- Sidebar Area Start -->
+                    <div class="col-lg-3 order-lg-first col-md-12 order-md-last">
+                        <div class="shop-sidebar-wrap">
+                            <!-- Sidebar single item -->
+                            <div class="sidebar-widget">
+                                <h4 class="sidebar-title">Категории:</h4>
+                                <div class="sidebar-widget-category">
+                                    <ul>
+                                        <li><a href="#" class="selected m-0"> All
+                                                <span>(65)</span> </a></li>
+                                        {% for obj in category %}
+                                        <li><a href="#" class="selected m-0"> {{ obj.title }}
+                                                <span>(65)</span> </a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sidebar single item -->
+                            <div class="sidebar-widget mt-8">
+                                <h4 class="sidebar-title">Цена:</h4>
+                                <div class="price-filter">
+                                    <div class="price-slider-amount">
+                                        <input type="text" id="amount" class="p-0 h-auto lh-1" name="price" placeholder="Add Your Price" />
+                                    </div>
+                                    <div id="slider-range"></div>
+                                </div>
+                            </div>
+                            <!-- Sidebar single item -->
+
+                            <!-- Sidebar single item -->
+
+                            <!-- Sidebar single item -->
+                            <div class="sidebar-widget">
+                                <h4 class="sidebar-title">Brands</h4>
+                                <div class="sidebar-widget-brand">
+                                    <ul>
+                                        {% for obj in brand %}
+                                        <li><a href="#" class="selected m-0"> {{ obj.title }}<span>(65)</span> </a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Sidebar single item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Page End  -->
+        <!-- Footer Area Start -->
+
+        <!-- Footer Area End -->
+    </div>
+    <!-- Modal -->
+    <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                            <!-- Swiper -->
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/1.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/2.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/3.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/4.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/zoom-image/5.webp' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/1.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/2.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/3.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/4.webp' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{% static 'Main/images/product-image/small-image/5.webp' %}" alt="">
+                                    </div>
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-buttons">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-details-content quickview-content">
+                                <h2>Modern Smart Phone</h2>
+                                <div class="pricing-meta">
+                                    <ul class="d-flex">
+                                        <li class="new-price">$20.90</li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-rating-wrap">
+                                    <div class="rating-product">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="read-review"><a class="reviews" href="#">( 2 Review )</a></span>
+                                </div>
+                                <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>SKU:</span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Ch-256xl</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Categories: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Smart Device, </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">ETC</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Tags: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Smart Device, </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Phone</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-quality">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    </div>
+                                    <div class="pro-details-cart">
+                                        <button class="add-cart"> Add To
+                                            Cart</button>
+                                    </div>
+
+                                </div>
+                                <div class="payment-img">
+                                    <a href="#"><img src="{% static 'Main/images/icons/payment.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+    <!-- Modal Cart -->
+    <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Товар добавлен в корзину!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'Main/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+    <!-- Modal wishlist -->
+    <div class="modal customize-class fade" id="exampleModal-Wishlist" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                    <div class="tt-modal-messages">
+                        <i class="pe-7s-check"></i> Товар добавлен в избранное!
+                    </div>
+                    <div class="tt-modal-product">
+                        <div class="tt-img">
+                            <img src="{% static 'Main/images/product-image/1.webp' %}" alt="Modern Smart Phone">
+                        </div>
+                        <h2 class="tt-title"><a href="#">Modern Smart Phone</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock %}

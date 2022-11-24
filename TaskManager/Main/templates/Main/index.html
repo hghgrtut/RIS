@@ -1,0 +1,44 @@
+{% extends 'Main/base.html' %}
+
+{% block body %}
+
+{% if page == 'activeTask' %}
+<h3>Активные задачи:</h3>
+{% elif page == 'didTask' %}
+<h3>Выполненные задачи:</h3>
+{% elif page == 'allTask' %}
+<h3>Все задачи:</h3>
+{% endif %}
+
+{% if tasks %}
+{% for el in tasks %}
+{% if el.done %}
+<div class="alert alert-success mt-2">
+    {% else %}
+    <div class="alert alert-warning mt-2">
+        {% endif %}
+
+        <div class="hidd">
+            <h5 class="position_left">{{ el.title |linebreaksbr }}</h5>
+            <i class="position_right">{{ el.time_update }}</i>
+        </div>
+        <p>{{ el.task |linebreaksbr }}</p>
+
+        {% if el.done == False %}
+        <a href="{% url 'readyTask' el.pk %}" class="text-success" id="marg"><i class="fa-solid fa-folder-open"></i>Выполнено</a>
+        {% else %}
+        <a href="{% url 'activateTask' el.pk %}" class="text-primary" id="marg2"><i
+                class="fa-solid fa-code-pull-request"></i>Активировать</a>
+        {% endif %}
+        <a href="{{ el.get_absolute_url }}" class="text-warning" id="marg3"><i class="fa-solid fa-gears"></i>Редактировать</a>
+        <a href="{% url 'deleteTask' el.pk %}" class="text-danger"><i class="fa-solid fa-bug"></i>Удалить</a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h4 class="text-danger">Отсутствуют</h4>
+    {% if page != 'didTask' %}
+    <a href="{% url 'addTask' %}">Добавить задачу</a>
+    {% endif %}
+    {% endif %}
+
+{% endblock %}
