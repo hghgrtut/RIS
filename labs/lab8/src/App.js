@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Items from "./components/Items";
 import Types from "./components/Types";
 import ShowItem from "./components/ShowItem";
+import { Auth } from "./components/Auth";
 
 class App extends React.Component {
   constructor(props) {
@@ -49,10 +50,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-
-
-
-
+        <Auth />
         <Header orders={this.state.orders} onDelete={this.deleteOrder} onShowOrder={this.showOrder} />
         <Types chooseType={this.chooseType} />
         <Items onShowItem={this.onShowItem} items={this.state.currentItems} onAdd={this.addToOrder} />

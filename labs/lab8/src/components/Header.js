@@ -68,10 +68,10 @@ export default function Header(props) {
   return (
     <header>
       <div>
-        <span className='logo'>Train Shop</span>
+
+        <span className='logo'>CS: GO Shop</span>
         <ul className='nav'>
-          <li>Profile</li>
-          <li>Info</li>
+          <li><a href='https://www.instagram.com/vvk.jpg/'>Info</a></li>
           <li onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`}>Cart</li>
           {cartOpen && (
             <div>
@@ -103,6 +103,7 @@ export default function Header(props) {
 
       </div >
       <div className='presentation'></div>
+
     </header >
   )
 }

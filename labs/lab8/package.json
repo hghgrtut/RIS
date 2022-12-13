@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-native-fs": "^2.0.1-rc.2",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
